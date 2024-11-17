@@ -1,22 +1,20 @@
 class Account {
   const Account({
     required this.id,
-    required this.username,
-    required this.firstName,
-    required this.lastName,
+    required this.name,
+    required this.balance,
   });
 
   final int id;
-  final String username;
-  final String firstName;
-  final String lastName;
+  final String name;
+  final int balance;
 
   factory Account.fromJson(Map<String, dynamic> json) {
+    final data = json['data'];
     return Account(
-      id: json['id'],
-      username: json['username'],
-      firstName: json['firstName'],
-      lastName: json['lastName'],
+      id: data['account_id'],
+      name: data['name'],
+      balance: data['balance'],
     );
   }
 }

@@ -8,7 +8,7 @@ enum AuthStatus { unknown, authenticated, unauthenticated }
 
 class AuthRepository {
   final _controller = StreamController<AuthStatus>();
-  final String baseUrl = 'https://localhost:8081';
+  final String baseUrl = 'http://localhost:8081';
   final Dio dio = Dio();
 
   AuthToken? _currentToken;
@@ -31,6 +31,7 @@ class AuthRepository {
         '$baseUrl/auth/login',
         data: {'username': username, 'password': password},
       );
+      print(response.data);
 
       if (response.statusCode == 200) {
         _currentToken = AuthToken.fromJson(response.data);

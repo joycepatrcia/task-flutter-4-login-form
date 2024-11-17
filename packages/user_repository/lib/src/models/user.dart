@@ -10,10 +10,11 @@ class User {
   final int balance;
 
   factory User.fromJson(Map<String, dynamic> json) {
+    final data = json['data'];
     return User(
-      id: json['id'],
-      name: json['name'],
-      balance: json['balance'],
+      id: data['account_id'],
+      name: data['name'],
+      balance: data['balance'],
     );
   }
 }

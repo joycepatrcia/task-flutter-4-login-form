@@ -6,21 +6,23 @@ import 'package:user_repository/src/models/models.dart';
 class UserRepository {
   User? _user;
   String? _lastToken;
-  final String baseUrl = 'https://dummyjson.com';
+  final String baseUrl = 'http://localhost:8081';
   final Dio dio = Dio();
 
   Future<User?> getUser(String token) async {
     if (_user != null && _lastToken == token) return _user;
     
     try {
+      print(token);
       final response = await dio.get(
-        '$baseUrl/auth/me',
+        '$baseUrl/account/my',
         options: Options(
           headers: {
             'Authorization': 'Bearer $token',
           },
         ),
       );
+      print("1");
 
       if (response.statusCode == 200) {
         _user = User.fromJson(response.data);

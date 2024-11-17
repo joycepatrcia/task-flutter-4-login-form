@@ -43,6 +43,8 @@ dependencies:
     path: packages/auth_repository
   user_repository:
     path: packages/user_repository
+  dio: ^5.7.0
+  english_words: ^4.0.0
 
 dev_dependencies:
   flutter_test:
